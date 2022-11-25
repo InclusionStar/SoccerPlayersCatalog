@@ -1,0 +1,46 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "SPC | Добавление футболиста";
+}
+
+<div>
+    <a asp-controller="Home" asp-action="PlayerList">Перейти к списку футболистов</a>
+    
+    <h3>Добавить нового футболиста</h3>
+    <form method="post">
+        <label>Имя:</label>
+        <input type="text" name="name" />
+        <br/>
+        <label>Фамилия:</label>
+        <input type="text" name="surname" />
+        <br/>
+        <label>Пол:</label>
+        <select name="genderId">
+            @foreach (var gender in ViewBag.Genders)
+            {
+                <option value="@gender.Id">@gender.Name</option>
+            }
+        </select>
+        <br/>
+        <label>Дата рождения:</label>
+        <input type="date" name="birthDate" />
+        <br/>
+        <label>Название команды:</label>
+        <input type="text" name="team" list="teams" />
+        <datalist id="teams">
+        @foreach (var team in ViewBag.Teams)
+            {
+                <option value="@team.Id">@team.Name</option>
+            }
+        </datalist>
+        <br/>
+        <label>Страна:</label>
+        <select name="countryId">
+            @foreach (var country in ViewBag.Countries)
+            {
+                <option value="@country.Id">@country.Name</option>
+            }
+        </select>
+        <input type="submit" value="Отправить" />
+    </form>
+</div>

@@ -1,0 +1,30 @@
+@model IEnumerable<SoccerPlayersCatalog.Models.Player>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "SPC | Список футболистов";
+}
+
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+    <title>Список футболистов</title>
+</head>
+<body>
+<div>
+    <a asp-controller="Home" asp-action="Index">Добавить нового футболиста</a>
+    <h3>Список игроков</h3>
+    <table>
+        @foreach (var player in Model)
+        {
+            <tr>
+                <td>@player.Name</td><td>@player.Surname</td>
+                <td>@player.Gender.Name</td><td>@player.BirthDate</td>
+                <td>@player.Country.Name</td><td>@player.Team.Name</td>
+            </tr>
+        }
+    </table>
+    <a asp-controller="Home" asp-action="Index">Добавить нового футболиста</a>
+</div>
+</body>
+</html>
